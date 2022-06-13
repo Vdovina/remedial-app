@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ROUTES } from "../../constants/routes";
@@ -28,7 +28,6 @@ function ChildrenList(props : ChildrenListProps) {
   } = useSelector((state : IState) => state.childrenList);
 
   useEffect(() => {
-    console.log('!');
     dispatch(loadChildren());
   }, [pageEntities, currentPage]);
 

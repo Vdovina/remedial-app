@@ -10,8 +10,8 @@ import { default as appSaga } from './sagas';
 const persistConfig = {
   key: 'remedial-app-global-redux',
   storage: storageSession,
-  whitelist: ['form'],
-  StatereConciler: autoMergeLevel2 // Посмотреть конкретную ситуацию «процесса слияния»
+  whitelist: ['auth'],
+  // StatereConciler: autoMergeLevel2 // Посмотреть конкретную ситуацию «процесса слияния»
 };
 
 const sagaMiddleware = createSagaMiddleware();

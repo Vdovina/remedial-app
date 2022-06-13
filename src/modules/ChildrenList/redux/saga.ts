@@ -6,14 +6,15 @@ import {
   loadChildrenFail,
 } from './actions';
 import { IChildListResponse } from '../../../models/IChild';
+import { IAction } from '../../../models/IAction';
 
 export function* fetchChildren() {
   try {
-    const { user: { userId }} = yield select(({ auth }) => auth);
+    const { user: { token }} = yield select(({ auth }) => auth);
     const { currentPage, pageEntities } = yield select(({ childrenList }) => childrenList);
     const result : IChildListResponse = yield call(
       ChildService.getChildren,
-      userId,
+      token,
       currentPage,
       pageEntities
     );

@@ -1,7 +1,7 @@
 import { IResponse } from './IResponse';
 
 export interface IUser {
-  id: number,
+  token: string,
   surname: string,
   name: string,
   email: string,
@@ -9,7 +9,7 @@ export interface IUser {
 }
 
 export interface IUserName {
-  id: number,
+  token: string,
   surname: string,
   name: string,
 }
@@ -20,7 +20,7 @@ export interface ILogin {
 }
 
 export interface IUserData {
-  id: number,
+  token: string,
   surname: string,
   userName: string,
   email: string,

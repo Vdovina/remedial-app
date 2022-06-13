@@ -4,7 +4,7 @@ import { LOADING_STATUS } from "../../../constants/loadingStatuses";
 
 export interface IAuthState {
   user: {
-    userId: number | null,
+    token: string | null,
     name: string | null,
     surname: string | null,
     email: string | null,
@@ -16,18 +16,7 @@ export interface IAuthState {
 
 const initialState : IAuthState = {
   user: {
-    userId: 1,
-    name: 'Елена',
-    surname: 'Хей',
-    email: 'lena0012@gmail.com',
-  },
-  isAuth: true,
-  isLoading: LOADING_STATUS.DONE,
-};
-
-const initialState1 : IAuthState = {
-  user: {
-    userId: null,
+    token: null,
     name: null,
     surname: null,
     email: null,
@@ -45,7 +34,7 @@ const reducer = (
       return ({
         ...state,
         user: {
-          userId: action.payload.id,
+          token: action.payload.token,
           name: action.payload.name,
           surname: action.payload.surname,
           email: action.payload.email,

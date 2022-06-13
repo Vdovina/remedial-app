@@ -9,9 +9,9 @@ export default class ChildService {
    * @param {Object} userId
    * @returns {Promise}
    */
-  static getChildren(userId: number, page: number, count: number) {
+  static getChildren(token: string, page: number, count: number) {
     const params = {
-      userId,
+      token,
       page,
       count,
     };

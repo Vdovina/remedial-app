@@ -7,12 +7,10 @@ import { IState } from "../../redux/store";
 import { ERRORS, ERROR_LABELS } from '../../constants/errors';
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
-import axios from "axios";
 import { AuthService } from "../../services/API/AuthService";
-import { AuthContext } from "../../helpers/auth/AuthContext";
 
 function Auth() {
-  const auth = useContext(AuthContext);
+  const { isAuth } = useSelector((state: IState) => state.auth);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('')
   const [remember, setRemember] = useState<boolean>(false);
@@ -25,15 +23,8 @@ function Auth() {
   };
 
   const onSignIn = async () => {
-    // dispatch(loadUserData(email, password));
-    try {
-      const data = await AuthService.authorize({ email, password });
-      auth.login('deg', 1, data.resultData.userName);
-      navigate(ROUTES.HOME);
-    }
-    catch (error) {
-      console.error(error);
-    }
+    dispatch(loadUserData(email, password));
+    navigate(ROUTES.HOME);
   };
 
   return (

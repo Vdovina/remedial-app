@@ -11,10 +11,11 @@ export function* fetchUser(props: any) {
   try {
     const { payload: { email, password }} = props;
     const result: IUserResponse = yield call(AuthService.authorize, { email, password });
+    debugger;
     
     if (result.isSucceeded) {
       const user = {
-        id: result.resultData.id,
+        token: result.resultData.token,
         name: result.resultData.userName,
         surname: result.resultData.surname,
         email: result.resultData.email,

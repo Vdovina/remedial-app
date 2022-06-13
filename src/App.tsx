@@ -18,38 +18,31 @@ import GamePage from './modules/GamePage';
 import NotFound from './modules/NotFound';
 import AuthControl from './helpers/auth/AuthControl';
 import Layout from './helpers/auth/Layout';
-import { useAuth } from './use/useAuth';
-import { AuthContext } from './helpers/auth/AuthContext';
 
 function App() {
-  const {token, login, logout, userId, userName} = useAuth();
-  const isAuthenticated = !!token;
-
   return (
-    <AuthContext.Provider value={{token, userId, userName, login, logout, isAuthenticated}}>
-      <BrowserRouter>
-        <div className='app'>
-          <Routes>
-            <Route element={<Layout hideHeaderPaths={[ROUTES.LOGIN, ROUTES.REGISTER]} />}>
-              <Route path={ROUTES.LOGIN} element={<Auth/>} />
-              <Route path={ROUTES.REGISTER} element={<Register/>} />
-              <Route path={ROUTES.HOME} element={<HomePage/>} />
-              <Route path={ROUTES.GAMES} element={<GameList/>} />
-              <Route path={ROUTES.GAME} element={<GamePage/>} />
+    <BrowserRouter>
+      <div className='app'>
+        <Routes>
+          <Route element={<Layout hideHeaderPaths={[ROUTES.LOGIN, ROUTES.REGISTER]} />}>
+            <Route path={ROUTES.LOGIN} element={<Auth/>} />
+            <Route path={ROUTES.REGISTER} element={<Register/>} />
+            <Route path={ROUTES.HOME} element={<HomePage/>} />
+            <Route path={ROUTES.GAMES} element={<GameList/>} />
+            <Route path={ROUTES.GAME} element={<GamePage/>} />
 
-              <Route element={<AuthControl />}>
-                <Route path={ROUTES.CHILDREN} element={<ChildrenList/>} />
-                <Route path={ROUTES.CHILD_PROFILE} element={<ChildProfile />} />
-                <Route path={ROUTES.CREATE_CHILD} element={<NewChild/>} />
-                <Route path={ROUTES.PROGRAMMES} element={<Programmes/>} />
-                <Route path={ROUTES.STATISTICS} element={<Statistics/>} />
-              </Route>
+            <Route element={<AuthControl />}>
+              <Route path={ROUTES.CHILDREN} element={<ChildrenList/>} />
+              <Route path={ROUTES.CHILD_PROFILE} element={<ChildProfile />} />
+              <Route path={ROUTES.CREATE_CHILD} element={<NewChild/>} />
+              <Route path={ROUTES.PROGRAMMES} element={<Programmes/>} />
+              <Route path={ROUTES.STATISTICS} element={<Statistics/>} />
             </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </AuthContext.Provider>
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
