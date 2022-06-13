@@ -1,0 +1,43 @@
+@import "../../styles/vars.scss";
+
+.button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: $border-radius;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover:enabled {
+    box-shadow: 0 0px 4px 0px rgb(106 117 202 / 45%);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &__default {
+    color: $second-text-color;
+    background-color: $button-color;
+    &:hover:enabled {
+      background-color: $bright-color;
+    }
+  }
+
+  &__noBorder {
+    background-color: transparent;
+    color: $button-color;
+  }
+
+  &__light {
+    background-color: $button-light-color;
+    color: $button-color;
+  }
+
+
+}

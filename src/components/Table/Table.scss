@@ -1,0 +1,109 @@
+@import '../../styles/vars.scss';
+@import '../../styles/mixins.scss';
+
+.table__wrapper {
+  flex-grow: 1;
+  min-height: 0;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  background: $table-background-color;
+  color: $main-text-color;
+  font-size: 13px;
+  font-weight: 500;
+  border-spacing: 0;
+
+  thead {
+    box-shadow: 0 0 5px 0 $border-color;
+    width: 100%;
+    z-index: 1;
+    display: block;
+    overflow: hidden;
+  }
+
+  tbody {
+    width: 100%;
+    display: block;
+    flex: 1;
+    position: relative;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    @include scrollStyle($deep-color);
+
+    tr {
+      &:last-child td {
+        border: 0;
+      }
+      &:nth-of-type(even) {
+        background-color: $table-second-field-color;
+      }
+      &:not(.table__tr-loading):hover {
+        cursor: pointer;
+        background-color: $selection-color;
+      }
+    }
+  }
+
+  tr {
+    display: flex;
+    width: 100%;
+    min-height: 50px;
+  }
+
+  th, td {
+    min-width: 130px;
+    flex: 1;
+    word-break: break-word;
+    text-align: left;
+    font-weight: normal;
+    line-height: 20px;
+  }
+
+  th {
+    padding: 15px 10px;
+  }
+
+  td {
+    padding: 10px;
+    border-bottom: 1px solid $border-color;
+  }
+  
+  tfoot {
+    width: 100%;
+    display: block;
+    box-shadow: 0 0 5px 0 $border-color;
+    border-top: 1px solid $border-color;
+    td {
+        padding: 0 10px;
+    }
+  }
+
+  &__tr-loading {
+    display: none;
+  }
+
+  & .table__tr-loading {
+    display: block;
+    height: 0;
+  }
+
+  & .table__loading-data {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+}

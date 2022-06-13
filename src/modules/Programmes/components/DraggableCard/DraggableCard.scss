@@ -1,0 +1,50 @@
+.draggable-card {
+  border-radius: 6px;
+  cursor: pointer;
+  &:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+
+  &__put {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    line-height: 16px;
+
+    &__wrapper {
+      margin: 10px 20px;
+      padding: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      border: 1px dashed black;
+      cursor: pointer;
+    }
+
+    &__index {
+      margin-left: 10px;
+    }
+
+    &__name {
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 6px;
+    }
+  }
+
+  &__remove {
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &__icon {
+      height: 12px;
+      width: 12px;
+    }
+  }
+}

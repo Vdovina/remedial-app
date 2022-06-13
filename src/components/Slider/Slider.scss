@@ -1,0 +1,53 @@
+.slider {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__inner {
+    white-space: nowrap;
+    transition: transform 0.3s;
+  }
+
+  &__button {
+    border-radius: 50%;
+    border: none;
+    background-color: #FFFF;
+    cursor: pointer;
+    &__icon {
+      width: 20px;
+      height: 20px;
+      padding: 5px;
+    }
+  }
+
+  &__indicators {
+    margin-top: 4px;
+    
+    &__container {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+    }
+
+    &__circle {
+      width: 7px;
+      height: 7px;
+      opacity: 0.5;
+      background-color: #000;
+      border-radius: 50%;
+      box-shadow: 0px 2px 4px #000;
+      cursor: pointer;
+
+      &--active {
+        opacity: 1;
+      }
+    }
+  }
+}

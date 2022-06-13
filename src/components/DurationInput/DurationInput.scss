@@ -1,0 +1,48 @@
+@import "../../styles/vars.scss";
+
+.duration-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background-color: $areas-background-color;
+  border-radius: $border-radius;
+
+  &__input {
+    width: 21px;
+    border: none;
+    font-size: 16px;
+    line-height: 30px;
+    font-family: Montserrat, sans-serif;
+    border-radius: 6px;
+    &:focus {
+      outline-width: 0px;
+      border-color: none;
+    }
+  }
+
+  &__arrows {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &__triangle {
+      border-style: solid;
+      height: 0px;
+      width: 0px;
+
+      &--up {
+        border-color: transparent transparent rgba(0, 0, 0, 0.3);
+        border-width: 0px 4px 5px;
+      }
+
+      &--down {
+        border-color: rgba(0, 0, 0, 0.3) transparent transparent;
+        border-width: 5px 4px 0px;
+      }
+    }
+  }
+}

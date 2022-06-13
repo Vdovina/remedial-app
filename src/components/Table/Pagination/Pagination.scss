@@ -1,0 +1,80 @@
+@import '../../../styles/vars.scss';
+
+.table__pagination {
+  display: flex;
+  align-items: center;
+  height: 64px;
+
+  &-total {
+    flex-grow: 1;
+    span {
+      color: $powder-text-color;
+      margin-right: 4px;
+    }
+  }
+  
+  &-page-count {
+    display: flex;
+    align-items: center;
+    & > div {
+      margin-left: 15px;
+    }
+    margin-right: 40px;
+    div > span {
+      display: none;
+    }
+    &__select {
+      input {
+        border-radius: 6px;
+      }
+    }
+  }
+  
+  &-pages {
+    height: 38px;
+    border: 1px solid rgba(171, 171, 192, 0.3);
+    border-radius: 6px;
+    button {
+      height: 100%;
+      padding: 0 10px;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-weight: 500;
+      color: $powder-text-color;
+    }
+    button:first-child {
+      padding-left: 15px;
+    }
+    button:last-child {
+      padding-right: 15px;
+    }
+    button[disabled] {
+      color: $deep-color;
+    }  
+    button:hover {
+      color: $deep-color;
+      cursor: pointer;
+    }
+  }
+  
+  &-pages-prev-btn,
+  &-pages-next-btn {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    opacity: 0.3;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &__icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+

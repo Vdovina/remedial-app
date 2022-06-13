@@ -1,0 +1,35 @@
+@import '../../styles/vars.scss';
+
+.login {
+  &__wrapper {
+    width: 475px;
+    margin: auto;
+  }
+
+  &__form {
+    &__title {
+      font-size: 32px;
+      font-weight: normal;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &__field {
+      &:not(:last-of-type) {
+        margin-bottom: 8px;
+      }
+    }
+
+    &__buttons {
+      margin-top: 16px;
+
+      .button__wrapper:not(:last-of-type) {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  &__error-msg {
+    color: $error-color;
+  }
+}

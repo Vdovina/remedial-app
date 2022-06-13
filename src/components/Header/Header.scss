@@ -1,0 +1,59 @@
+@import '../../styles/vars.scss';
+
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #FFFF;
+  font-size: 16px;
+
+  &__container {
+    height: 100%;
+    padding: 0 0 0 230px;
+    align-items: center;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 3fr 230px;
+
+    @media screen and (max-width: 1400px) {
+      padding: 0 20px;
+      grid-template-columns: auto 3fr auto;
+    }
+  }
+
+  &__button {
+    text-transform: uppercase;
+  }
+
+  &__unregistered-panel, &__registered-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: $main-text-color;
+    a:link, a:visited {
+      color: $main-text-color;
+    }
+  }
+
+  &__registered-panel {
+    justify-content: space-evenly;
+  }
+
+  &__unregistered-panel {
+    justify-content: flex-end;
+  }
+
+  .user {
+    cursor: default;
+    &__wrapper {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    &__exit-btn {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}

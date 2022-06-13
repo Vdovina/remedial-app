@@ -1,0 +1,17 @@
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__wrapper {
+
+  }
+
+  &__icon {
+    width: 52px;
+  }
+
+  &__name {
+    margin-left: 10px;
+    text-transform: uppercase;
+  }
+}

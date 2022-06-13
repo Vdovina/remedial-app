@@ -1,0 +1,31 @@
+@import '../../styles/vars.scss';
+@import '../../styles/mixins.scss';
+
+.statistics {
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__container {
+    height: 100%;
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-height: 0;
+    max-height: 100%;
+    display: table;
+  }
+
+  &__charts {
+    &__wrapper {
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      @include scrollStyle($deep-color);
+    }
+  }
+}

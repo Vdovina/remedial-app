@@ -1,0 +1,33 @@
+@import "../../styles/vars.scss";
+
+.text-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2px 25px;
+  font-family: Montserrat, sans-serif;
+  border-radius: $border-radius;
+  border: 1px solid $medium-color;
+  font-size: 16px;
+  line-height: 30px;
+  &:focus {
+    outline-width: 0px;
+    border-color: $deep-color;
+  }
+
+  &__invalid {
+    border-color: #FF0000;
+    background-color: #ff000010;
+    &:focus {
+      border-color: #FF0000;
+    }
+
+    &-msg {
+      position: absolute;
+      z-index: 1;
+      padding: 8px 15px;
+      margin-top: 4px;
+      background-color: #FF0000;
+      border-radius: 6px;
+    }
+  }
+}

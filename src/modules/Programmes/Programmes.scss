@@ -1,0 +1,59 @@
+@import '../../styles/vars.scss';
+@import '../../styles/mixins.scss';
+
+.programmes {
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    text-transform: uppercase;
+  }
+
+  &__content {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    gap: 4px;
+    border-radius: 6px;
+    background-color: $areas-background-color;
+  }
+
+  &__programme-list, &__game-list {
+    padding: 20px 10px;
+
+   &__wrapper {
+    height: 100%;
+    width: 33%;
+   }
+
+   &__title {
+     margin-bottom: 20px;
+     text-align: center;
+     line-height: 30px;
+     font-weight: bold;
+     text-transform: uppercase;
+   }
+  }
+
+  &__programme-list__wrapper {
+    box-shadow: 3px 0 5px 0 $border-color;
+  };
+
+  &__list {
+    &__item {
+      margin-bottom: 10px;
+      cursor: pointer;
+      &--active {
+        font-weight: bold;
+        color: $deep-color;
+      }
+      &--new {
+        border-top: 1px dashed black;
+        padding-top: 4px;
+      }
+    }
+  }
+}

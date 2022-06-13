@@ -1,0 +1,15 @@
+@import "../../styles/vars.scss";
+
+.datepicker {
+  width: 100%;
+  padding: 2px 25px;
+  box-sizing: border-box;
+  border-radius: $border-radius;
+  border: 1px solid $medium-color;
+  font-size: 16px;
+  line-height: 30px;
+  &:focus {
+    outline-width: 0px;
+    border-color: $deep-color;
+  }
+}

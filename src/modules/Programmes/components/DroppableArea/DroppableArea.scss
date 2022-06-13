@@ -1,0 +1,14 @@
+.droppable-area {
+  width: 100%;
+  height: 100%;
+
+  &__drop-place {
+    height: 26px;
+    margin: 10px 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px dashed black;
+  }
+}

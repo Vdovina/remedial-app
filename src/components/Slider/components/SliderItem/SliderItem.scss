@@ -1,0 +1,31 @@
+.slider {
+  &__item {
+    width: 100%;
+    height: calc(100vh - 200px);
+    display: inline-flex;
+    align-items: center;
+    background-color: #FFEA7C;
+    color: #000;
+
+    &__image {
+      width: 60%;
+      height: 100%;
+      background-color: #000;
+    }
+
+    &__info {
+      width: 40%;
+      margin-left: 20px;
+      h1 {
+        font-size: 32px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      p {
+        width: 80%;
+        white-space: normal;
+        text-align: justify;
+      }
+    }
+  }
+}

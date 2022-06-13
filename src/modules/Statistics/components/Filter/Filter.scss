@@ -1,0 +1,21 @@
+@import '../../../../styles/vars.scss';
+
+.statistics {
+  &__filter {
+    &-panel {
+      box-sizing: border-box;
+      padding: 20px 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      align-items: end;
+      gap: 10px;
+      background-color: $contrast-color;
+      border-radius: $border-radius;
+    }
+
+    &__btn {
+      text-transform: none;
+      color: $main-text-color;
+    }
+  }
+}

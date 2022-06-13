@@ -1,0 +1,16 @@
+@mixin scrollStyle($color) {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+      border-left: 4px solid $color;
+  }
+  /* stylelint-disable */
+  scrollbar-width: thin;
+  scrollbar-color: $color transparent;
+  /* stylelint-enable */
+}
