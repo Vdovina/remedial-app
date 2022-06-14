@@ -13,6 +13,8 @@ interface GameSwitchProps {
   game: GameTypes,
   description: string,
   children: SelectOption[],
+  nextGame: string | null,
+  setNextGame: () => void,
   onSave?: (
     mistakeCount: number,
     timing: number,
@@ -28,6 +30,8 @@ function GameSwitch(props: GameSwitchProps) {
     game,
     description,
     children,
+    nextGame,
+    setNextGame,
     onSave = () => {}
   } = props;
   const INITIAL_SCALE = 5;
@@ -59,6 +63,8 @@ function GameSwitch(props: GameSwitchProps) {
         scale={scale}
         setScale={setScale}
         children={[ANY_CHILD_OPTION, ...children]}
+        nextGame={nextGame}
+        setNextGame={setNextGame}
         onSave={onSave}
       />
     </div>

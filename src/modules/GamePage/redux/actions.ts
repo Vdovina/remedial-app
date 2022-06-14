@@ -33,3 +33,26 @@ export const setCurrentGame = (game: any) => ({
   type: ACTIONS.SET_CURRENT_GAME,
   payload: game,
 });
+
+export const setCurrentGameOrder = () => ({
+  type: ACTIONS.SET_CUURENT_GAME_ORDER,
+});
+
+
+export const loadCurrentProgramme = (id: number, navigate: any) => ({
+  type: ACTIONS.LOAD_CURRENT_PROGRAMME,
+  payload: {
+    id,
+    navigate,
+  },
+});
+
+export const loadCurrentProgrammeSuccess = (programme: any[]) => ({
+  type: ACTIONS.LOAD_CURRENT_PROGRAMME_SUCCESS,
+  payload: programme,
+});
+
+export const loadCurrentProgrammeFail = (error: any) => ({
+  type: ACTIONS.LOAD_CURRENT_PROGRAMME_FAIL,
+  payload: error,
+});

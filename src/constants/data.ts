@@ -4,7 +4,7 @@ import { IGame } from "../models/IGame";
 import { IProgramme } from "../models/IProgramme";
 
 export const games = [{
-  id: 1,
+  id: 2,
   code: 'similar_figures',
   name: 'Найди одинаковые геометрические фигуры',
   description: 'Выбери две фигуры, у которых цвет или форма соответствуют тем, что задал компьютер',
@@ -14,7 +14,7 @@ export const games = [{
   category: '',
   theme: '',
 }, {
-  id: 2,
+  id: 3,
   code: 'similar_alive',
   name: 'Найди одинаковых живых существ',
   description: 'Выбери две фигуры, у которых цвет или форма соответствуют тем, что задал компьютер',
@@ -24,7 +24,7 @@ export const games = [{
   category: '',
   theme: '',
 }, {
-  id: 3,
+  id: 4,
   code: 'similar_things',
   name: 'Найди одинаковые предметы',
   description: 'Выбери две фигуры, у которых цвет или форма соответствуют тем, что задал компьютер',

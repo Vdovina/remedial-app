@@ -1,4 +1,4 @@
-import { IGame } from './IGame';
+import { IGame, IProgrammeGame } from './IGame';
 import { IResponse } from './IResponse';
 
 export interface IProgramme {
@@ -12,6 +12,12 @@ export interface IProgrammeName {
   name: string,
 }
 
+export interface IProgrammeWithGames {
+  id: number,
+  name: string,
+  games: IProgrammeGame[],
+}
+
 export interface IProgrammeResponse extends IResponse {
   resultData: IProgramme,
 }
@@ -22,4 +28,8 @@ export interface IProgrammesResponse extends IResponse {
 
 export interface IProgrammeListResponse extends IResponse {
   resultData: IProgrammeName[],
+}
+
+export interface IProgramWithGamesResponse extends IResponse {
+  resultData: IProgrammeWithGames[],
 }

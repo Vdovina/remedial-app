@@ -26,6 +26,18 @@ export default class ProgrammeService {
       .then(res => res.data);
   }
 
+  static getWithGames(token: string) {
+    return axios
+      .get(API_ROUTES.GET_PROGRAMMES_WITH_GAMES, { params: { token }})
+      .then(res => res.data);
+  }
+
+  static getOne(programId: number) {
+    return axios
+      .get(API_ROUTES.GET_CURRENT_PROGRAMME, { params: { programId }})
+      .then(res => res.data);
+  }
+
   /**
    * Save new program
    * @param {string} tpken

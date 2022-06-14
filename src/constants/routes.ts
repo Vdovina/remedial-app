@@ -35,11 +35,14 @@ export const API_ROUTES = {
   //Programmes
   GET_PROGRAMMES: `${SERVER}/program/getProgramsWithGames`,
   GET_PROGRAMME_LIST: `${SERVER}/program/getPrograms`,
+  GET_CURRENT_PROGRAMME: `${SERVER}/program/getProgramGames`,
+  GET_PROGRAMMES_WITH_GAMES: `${SERVER}/program/getProgramsWithGames`,
   SAVE_PROGRAMME: `${SERVER}/program/addProgram`,
   EDIT_PROGRAMME: `${SERVER}/program/editProgram`,
   DELETE_PROGRAMME: `${SERVER}/program/deleteProgram`,
 
   //Games
+  GET_GAMES: `${SERVER}/game/getGamesForList`,
   SAVE_RESULTS: `${SERVER}/statistics/saveResults`,
   GET_DASHBOARD_DATA: `${SERVER}/statistics/dashboard`,
 };

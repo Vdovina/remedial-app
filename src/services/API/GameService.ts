@@ -10,7 +10,7 @@ export default class GameService {
    */
    static get() {
     console.log('LOAD GAMES');
-    // return axios.get(API_ROUTES.GET_CHILDREN);
+    return axios.get(API_ROUTES.GET_GAMES).then(res => res.data);
     return {
       isSucceeded: true,
       resultData: games,

@@ -13,10 +13,12 @@ export interface IGame {
 }
 
 export interface IProgrammeGame {
-  id?: number,
+  programGameID?: number,
   gameOrder: number,
   gameTiming: number,
   gameID: number,
+  gameName?: string,
+  gameCode?: string,
 }
 
 export interface IGameResponse extends IResponse {
@@ -25,4 +27,8 @@ export interface IGameResponse extends IResponse {
 
 export interface IGameListResponse extends IResponse {
   resultData: IGame[],
+}
+
+export interface IProgrammeGameResponse extends IResponse {
+  resultData: IProgrammeGame[],
 }

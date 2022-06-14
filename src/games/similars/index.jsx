@@ -5,9 +5,9 @@ import generate from "./logic/generate";
 import { COLORS } from './constants/colors';
 import { Button, Select } from "../../components";
 import { SIZES } from "./constants/sizes";
-import './Similars.scss';
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
+import './Similars.scss';
 
 const GAME_STATUSES = {
   START: 'START',
@@ -25,6 +25,8 @@ export default function Similars(props) {
     figures,
     description,
     children,
+    nextGame,
+    setNextGame,
     onSave,
   } = props;
 
@@ -36,10 +38,14 @@ export default function Similars(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    startGame()
+  }, []);
+
+  const startGame = () => {
     const newTask = generate(LEVEL, figures, COLORS);
     setTaskTitle({ property: newTask.property, task: newTask.task });
     setTask(newTask.objects);
-  }, []);
+  }
 
   useEffect(() => {
     const answers = task?.filter(item => item.isActive);
@@ -67,6 +73,14 @@ export default function Similars(props) {
     }
   };
 
+  const resetGame = () => {
+    setTask(null);
+    setStatus(GAME_STATUSES.START);
+    setTaskTitle('');
+    setMistakesCount(0);
+    startGame();
+  }
+
   return(
     <div className={classNames(
       "game",
@@ -82,11 +96,17 @@ export default function Similars(props) {
             >
               К странице с играми
             </Button>
-            <Button
-              onClick={() => navigate(ROUTES.GAMES)}
-            >
-              Следующая игра
-            </Button>
+            {nextGame && (
+              <Button
+                onClick={() => {
+                  setNextGame();
+                  navigate(ROUTES.GAME.replace(':game', nextGame));
+                  resetGame();
+                }}
+              >
+                Следующая игра
+              </Button>
+            )}
           </div>
         </div>
       )}

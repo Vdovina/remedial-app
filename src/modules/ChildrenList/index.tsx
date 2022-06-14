@@ -31,7 +31,10 @@ function ChildrenList(props : ChildrenListProps) {
     dispatch(loadChildren());
   }, [pageEntities, currentPage]);
 
-  const onRowClick = (e: any, rowValue: any) => {
+  const onRowClick = (event: any, rowValue: any) => {
+    if (event.target.className.includes('play-btn')) {
+      return;
+    }
     const id = rowValue.original.id;
     dispatch(loadChildInfo(id));
     navigate(ROUTES.CHILD_PROFILE.replace(':id', String(id)));

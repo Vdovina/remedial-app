@@ -15,6 +15,8 @@ interface GameSwitcherProps {
   scale: number,
   setScale: (value: number) => void,
   children: SelectOption[],
+  nextGame: string | null,
+  setNextGame: () => void,
   onSave: (
     mistakeCount: number,
     timing: number,
@@ -28,6 +30,8 @@ function GameSwitcher({
   theme, setTheme,
   scale, setScale,
   children,
+  nextGame,
+  setNextGame,
   onSave,
 } : GameSwitcherProps) {
   const gameSwitcher = (game: GameTypes) => {
@@ -57,6 +61,8 @@ function GameSwitcher({
       scale={scale}
       setScale={setScale}
       children={children}
+      nextGame={nextGame}
+      setNextGame={setNextGame}
       onSave={onSave}
     />
   );

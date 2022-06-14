@@ -7,6 +7,7 @@ import {
   loadChildren,
   saveResults,
   setCurrentGame,
+  setCurrentGameOrder,
 } from './redux/actions';
 import { useDispatch, useSelector } from "react-redux";
 import './GamePage.scss';
@@ -16,7 +17,11 @@ function GamePage() {
   const params = useParams();
   const gameType = useMemo(() => params.game, [params]);
   const dispatch = useDispatch();
-  const { children } = useSelector((state: IState) => state.gamePage);
+  const {
+    children,
+    currentProgramme,
+    currentGameOrder,
+  } = useSelector((state: IState) => state.gamePage);
 
   useEffect(() => {
     const currentGame = games.find(game => game.code === gameType);
@@ -32,6 +37,17 @@ function GamePage() {
     dispatch(saveResults(mistakeCount, timing, childId));
   }
 
+  const nextGame = useMemo(() => {
+    if (
+        currentGameOrder !== null
+        && currentProgramme
+        && currentProgramme?.length > currentGameOrder + 1
+      ) {
+      return(currentProgramme[currentGameOrder + 1]['gameCode'])
+    }
+    return null;
+  }, [currentGameOrder]);
+
   return (
     <div className="game__wrapper">
       <Game
@@ -39,6 +55,8 @@ function GamePage() {
         game={gameType as GameTypes || 'similar_figures'}
         description='Выбери две фигуры, у которых цвет или форма соответствуют тем, что задал компьютер'
         children={children || []}
+        nextGame={nextGame}
+        setNextGame={() => dispatch(setCurrentGameOrder())}
         onSave={saveGameResult}
       />
     </div>

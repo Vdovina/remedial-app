@@ -2,6 +2,7 @@ export const ERRORS = {
   AUTH_ERROR: 'wrong password or email',
 
   LOAD_PROGRAMMES_ERROR: 'Programmes Info Loading Failed',
+  LOAD_PROGRAMME_ERROR: 'Programme Info Loading Failed',
   LOAD_CHILDREN_ERROR: 'Child Info Loading Failed',
   LOAD_GAMES_ERROR: 'Games Loading Failed',
   LOAD_STATISTIC_DATA_ERROR: 'Statistic Data Loading Failed',
