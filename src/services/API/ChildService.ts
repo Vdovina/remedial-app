@@ -6,10 +6,12 @@ import { data } from '../../constants/data';
 export default class ChildService {
   /**
    * Get children list
-   * @param {Object} userId
+   * @param {string} token
+   * @param {number} page
+   * @param {number} count
    * @returns {Promise}
    */
-  static getChildren(token: string, page: number, count: number) {
+  static getList(token: string, page: number, count: number) {
     const params = {
       token,
       page,
@@ -22,22 +24,34 @@ export default class ChildService {
 
   /**
    * Get children list with names only
-   * @param {Object} userId
+   * @param {string} token
    * @returns {Promise}
    */
-   static getChildrenNames() {
+   static getNames(token: string) {
     return axios
-      .get(API_ROUTES.GET_CHILDREN_NAMES, { withCredentials: true })
+      .get(API_ROUTES.GET_CHILDREN_NAMES, { params: token })
       .then(res => res.data);
   }
 
-  static createNewChild(data: IChildData) {
+  /**
+   * Create new record about child
+   * @param {string} token
+   * @param {IChildData} data
+   * @returns {Promise}
+   */
+  static create(token: string, data: IChildData) {
     return axios.post(API_ROUTES.CREATE_NEW_CHILD, data);
   }
 
-  static getChild(userId: number, childId: number) {
+  /**
+   * Get info about child
+   * @param {string} token
+   * @param {number} childId
+   * @returns {Promise}
+   */
+  static get(token: string, childId: number) {
     const params = {
-      userId,
+      token,
       childId,
     };
     const url = API_ROUTES.GET_CHILD;
@@ -46,12 +60,26 @@ export default class ChildService {
       .then(res => res.data);
   }
 
-  static editChild(data: IChild) {
-    const url = API_ROUTES.EDIT_CHILD;
-    return axios.post(url, data);
+  /**
+   * Edit child
+   * @param {string} token
+   * @param {number} childData
+   * @returns {Promise}
+   */
+  static edit(token: string, childData: IChild) {
+    const data = {
+      ...childData,
+      token,
+    };
+    return axios.post(API_ROUTES.EDIT_CHILD, data).then(res => res.data);
   }
 
-  static deleteChild(childId: number) {
+  /**
+   * Delete child
+   * @param {number} childId
+   * @returns {Promise}
+   */
+  static delete(childId: number) {
     return axios
       .delete(API_ROUTES.DELETE_CHILD, { params: { childId } })
       .then(res => res.data);

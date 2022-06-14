@@ -4,14 +4,15 @@ import ToolsIcon from '../../../assets/tools.svg';
 import ScalePlusIcon from '../../../assets/scale-plus.svg';
 import ScaleMinusIcon from '../../../assets/scale-minus.svg';
 import { ToolButton } from "../components/ToolButton";
+import { SIZES } from "../../similars/constants/sizes";
 
 interface TimerPanelProps {
   toolsOpen: boolean,
   setToolsOpen: (value: boolean) => void;
   theme: GameThemeType,
   setTheme: (value: GameThemeType) => void,
-  bigFigures: boolean,
-  setBigFigures: (value: boolean) => void,
+  scale: number,
+  setScale: (value: number) => void,
 }
 
 export type GameThemeType = 'light' | 'dark';
@@ -20,8 +21,21 @@ function TimerPanel(props: TimerPanelProps) {
   const {
     toolsOpen, setToolsOpen,
     theme, setTheme,
-    bigFigures, setBigFigures,
+    scale, setScale,
   } = props;
+
+  const onZoomIn = () => {
+    if (scale < SIZES.length) {
+      setScale(scale + 1);
+    }
+  };
+
+  const onZoomOut = () => {
+    if (scale > 0) {
+      setScale(scale - 1);
+    }
+  };
+
   return (
     <>
       <div className="tool-panel__wrapper">
@@ -37,10 +51,16 @@ function TimerPanel(props: TimerPanelProps) {
         <div className="tools-panel__wrapper">
           <div className="tools-panel">
             <div className="tools-panel__btn-group">
-              <ToolButton onClick={() => setBigFigures(true)}>
+              <ToolButton
+                disabled={scale === SIZES.length - 1}
+                onClick={onZoomIn}
+              >
                 <img className="tools-panel__btn__icon" src={ScalePlusIcon} alt="plus" />
               </ToolButton>
-              <ToolButton onClick={() => setBigFigures(false)}>
+              <ToolButton
+                disabled={scale === 0}
+                onClick={onZoomOut}
+              >
                 <img className="tools-panel__btn__icon" src={ScaleMinusIcon} alt="plus" />
               </ToolButton>
             </div>

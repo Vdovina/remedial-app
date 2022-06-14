@@ -1,4 +1,5 @@
 import { call, select, takeLatest, put } from 'redux-saga/effects';
+import moment from 'moment';
 import ChildService from '../../../services/API/ChildService';
 import { ACTIONS } from './constants';
 import {
@@ -44,19 +45,20 @@ export function* fetchProgrammes() {
 
 export function* saveNewChild() {
   try {
-    const { user: { userId }} = yield select(state => state.auth);
+    const { user: { token }} = yield select(state => state.auth);
     const data: ChildType = yield select(state => state.newChildCard.form);
+    const newDate = data.birthDate && moment(data.birthDate).format('YYYY-MM-DD');
+    debugger;
     const params = {
       surname: data.surname,
       name: data.name,
-      birthDate: data.birthDate,
+      birthDate: newDate,
       diagnosis: data.diagnosis,
       parentPhone: data.parentPhone,
       info: data.info,
       programId: parseInt(data.programme?.value),
-      userId,
     };
-    yield call(ChildService.createNewChild, params);
+    yield call(ChildService.create, token, params);
   }
   catch (error) {
     yield put(saveNewChildError(error));

@@ -6,6 +6,9 @@ import './Similars.scss';
 import { GEOMETRY } from "./figures/geometry";
 import { COLORS } from './constants/colors';
 import { Button, Select } from "../../components";
+import { SIZES } from "./constants/sizes";
+import { ALIVE } from "./figures/alive";
+import { THINGS } from "./figures/things";
 
 const GAME_STATUSES = {
   START: 'START',
@@ -13,22 +16,25 @@ const GAME_STATUSES = {
   END: 'END',
 }
 
+const LEVEL = 6;
+const FIGURE_SIZE = 200;
+
 export default function Similars(props) {
   const {
     theme,
-    bigFigures, setBigFigures,
+    scale,
+    figures,
+    description,
   } = props;
 
   const [task, setTask] = useState(null);
-  const [isWon, setIsWon] = useState(false);
   const [status, setStatus] = useState(GAME_STATUSES.START);
   const [taskTitle, setTaskTitle] = useState('');
   const [mistakesCount, setMistakesCount] = useState(0);
   const [player, setPlayer] = useState(null);
 
   useEffect(() => {
-    const newTask = generate(6, GEOMETRY, COLORS);
-    console.log(newTask);
+    const newTask = generate(LEVEL, figures, COLORS);
     setTaskTitle({ property: newTask.property, task: newTask.task });
     setTask(newTask.objects);
   }, []);
@@ -38,11 +44,10 @@ export default function Similars(props) {
     if (answers && answers.length === 2
       && answers.filter(item => item[taskTitle.property].name === taskTitle.task).length === 2
       ) {
-      setIsWon(true);
-      console.log(mistakesCount);
-    }
-    else {
-      setIsWon(false);
+      setTimeout(() => {
+        setStatus(GAME_STATUSES.END);
+        console.log(mistakesCount);
+      }, 1000);
     }
   }, [task]);
 
@@ -81,6 +86,7 @@ export default function Similars(props) {
                       'figure',
                       item.isActive && 'figure__is-active'
                     )}
+                    style={{width: SIZES[scale]*FIGURE_SIZE, height: SIZES[scale]*FIGURE_SIZE}}
                     onClick={() => onSelect(item.id)}
                     >
                       {item.figure.draw(item.color[theme])}
@@ -95,7 +101,7 @@ export default function Similars(props) {
         <div className="game__starting-canvas">
           <div className="game__greeting-area">
             <div className="game__greeting-area__rules">
-              Выбери две фигуры, у которых цвет или форма соответствуют тем, что задал компьютер
+              {description}
             </div>
             <div className="game__greeting-area__func">
               <Select

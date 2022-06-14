@@ -1,9 +1,11 @@
 import Similars from "./similars";
 import TimerPanel from "./tools/TimerPanel";
-import GameWrapper from "./tools/GameWrapper";
+import Game from "./tools/GameWrapper";
+import GameSwitcher from "./tools/GameSwitcher";
 
 export {
   Similars,
   TimerPanel,
-  GameWrapper,
+  GameSwitcher,
+  Game,
 }

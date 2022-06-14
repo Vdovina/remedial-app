@@ -20,7 +20,6 @@ export interface IChildData {
   parentPhone?: string,
   info?: string,
   programId?: number,
-  userId: number,
 }
 
 export interface IChildTableData {

@@ -35,14 +35,9 @@ export function* fetchStatistics() {
 
 export function* fetchChildren() {
   try {
-    const { user: { userId }} = yield select(({ auth }) => auth);
-    const { currentPage, pageEntities } = yield select(({ childrenList }) => childrenList);
+    const { user: { token }} = yield select(({ auth }) => auth);
     const result : IChildListResponse = yield call(
-      ChildService.getChildren,
-      userId,
-      currentPage,
-      pageEntities
-    );
+      ChildService.getNames, token);
 
     if (!result.isSucceeded) {
       throw ERRORS.LOAD_CHILDREN_ERROR;

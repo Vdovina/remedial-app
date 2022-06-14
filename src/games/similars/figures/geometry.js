@@ -5,17 +5,19 @@ import {
   Triangle,
   Ellipse,
   Star,
+  Rhomb,
+  Rectangle,
+  Pentagon,
 } from '../constants/geometry';
-
-// export const GEOMETRY = {
-//   triangle: 'M91 0L181.933 157.5H0.0673294L91 0Z',
-//   square: 'M10 10 h 80 v 80 h -80 Z',
-// }
 
 export const GEOMETRY = {
   square: {
     name: 'square',
     draw: Square,
+  },
+  rectangle: {
+    name: 'rectangle',
+    draw: Rectangle,
   },
   circle: {
     name: 'circle',
@@ -32,5 +34,13 @@ export const GEOMETRY = {
   star: {
     name: 'star',
     draw: Star,
+  },
+  rhomb: {
+    name: 'rhomb',
+    draw: Rhomb,
+  },
+  pentagon: {
+    name: 'pentagon',
+    draw: Pentagon,
   },
 }

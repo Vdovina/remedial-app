@@ -14,9 +14,9 @@ import { IResponse } from '../../../models/IResponse';
 export function* fetchChildInfo() {
   try {
     const { id } = yield select(state => state.childProfile.childInfo);
-    const { user: { userId }} = yield select(({ auth }) => auth);
+    const { user: { token }} = yield select(({ auth }) => auth);
     if (id) {
-      const result : IChildResponse = yield call(ChildService.getChild, userId, id);
+      const result : IChildResponse = yield call(ChildService.get, token, id);
       if (result.isSucceeded) {
         yield put(loadChildInfoSuccess(result.resultData));
       }
@@ -35,6 +35,7 @@ export function* fetchChildInfo() {
 
 export function* editChild() {
   try {
+    const { user: { token }} = yield select(state => state.auth);
     const { form, childInfo} = yield select(({ childProfile }) => childProfile);
     const newChildData : IChild = {
       id: childInfo.id,
@@ -46,7 +47,7 @@ export function* editChild() {
       info: form.info,
       programId: null,
     };
-    yield call(ChildService.editChild, newChildData);
+    yield call(ChildService.edit, token, newChildData);
   }
   catch (error) {
     console.error(error);
@@ -56,7 +57,7 @@ export function* editChild() {
 export function* deleteChild() {
   try {
     const { id } = yield select(state => state.childProfile.childInfo);
-    const result : IResponse = yield call(ChildService.deleteChild, id);
+    const result : IResponse = yield call(ChildService.delete, id);
     if (!result.isSucceeded) {
       throw ERRORS.DELETE_CHILD_ERROR;
     }

@@ -13,7 +13,7 @@ export function* fetchChildren() {
     const { user: { token }} = yield select(({ auth }) => auth);
     const { currentPage, pageEntities } = yield select(({ childrenList }) => childrenList);
     const result : IChildListResponse = yield call(
-      ChildService.getChildren,
+      ChildService.getList,
       token,
       currentPage,
       pageEntities

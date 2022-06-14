@@ -5,9 +5,10 @@ interface ToolButtonProps {
   children: JSX.Element,
   className?: string,
   onClick: () => void,
+  disabled?: boolean,
 }
 
-export function ToolButton({ children, className, onClick } : ToolButtonProps) {
+export function ToolButton({ children, className, onClick, disabled = false } : ToolButtonProps) {
   return (
     <button
       className={classNames(
@@ -15,6 +16,7 @@ export function ToolButton({ children, className, onClick } : ToolButtonProps) {
         className && className,
       )}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
