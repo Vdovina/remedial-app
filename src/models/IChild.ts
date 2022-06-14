@@ -25,6 +25,7 @@ export interface IChildData {
 export interface IChildTableData {
   id: number,
   name: string,
+  surname?: string,
   age: number,
   diagnosis: string,
   parentPhone: string,
@@ -43,7 +44,7 @@ export interface IChildResponse extends IResponse {
 }
 
 export interface IChildListResponse extends IResponse {
-  resultData: IChild[],
+  resultData: IChildTableData[],
 }
 
 export interface IChildNameListResponse extends IResponse {

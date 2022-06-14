@@ -45,7 +45,7 @@ const initialState : childProfileState = {
   form: {
     name: '',
     surname: '',
-    birthDate: '',
+    birthDate: '2018-01-01',
     parentPhone: '',
     diagnosis: '',
     info: '',

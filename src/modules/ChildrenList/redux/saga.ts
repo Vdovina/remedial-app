@@ -22,7 +22,7 @@ export function* fetchChildren() {
     const children = result.isSucceeded ? result.resultData.map(child => ({
       id: child.id,
       name: `${child.surname} ${child.name}`,
-      age: 5,
+      age: child.age,
       diagnosis: child.diagnosis,
       parentPhone: child.parentPhone,
       info: child.info,

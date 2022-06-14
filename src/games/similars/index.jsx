@@ -48,8 +48,9 @@ export default function Similars(props) {
       ) {
       setTimeout(() => {
         setStatus(GAME_STATUSES.END);
-        console.log(mistakesCount);
-        onSave(mistakesCount, 120, player.value);
+        if (player.value !== '*') {
+           onSave(mistakesCount, 120, player.value);
+        }
       }, 500);
     }
   }, [task]);
@@ -80,6 +81,11 @@ export default function Similars(props) {
               onClick={() => navigate(ROUTES.GAMES)}
             >
               К странице с играми
+            </Button>
+            <Button
+              onClick={() => navigate(ROUTES.GAMES)}
+            >
+              Следующая игра
             </Button>
           </div>
         </div>

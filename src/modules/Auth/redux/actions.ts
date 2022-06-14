@@ -18,3 +18,7 @@ export const loadUserDataFail = (error: any) => ({
   type: ACTIONS.LOAD_USER_DATA_FAIL,
   payload: error,
 });
+
+export const logout = () => ({
+  type: ACTIONS.LOGOUT,
+});

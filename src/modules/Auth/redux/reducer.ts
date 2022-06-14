@@ -47,6 +47,10 @@ const reducer = (
         isAuth: false,
         error: action.payload,
       });
+    case ACTIONS.LOGOUT:
+      return ({
+        ...initialState,
+      })
     default:
       return state;
   }

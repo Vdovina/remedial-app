@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Logo, User } from './components';
 import { REGISTERED_MENU_OPTIONS, UNREGISTERED_MENU_OPTIONS } from '../../constants/menuOptions';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IState } from '../../redux/store';
+import { logout } from '../../modules/Auth/redux/actions';
 import './Header.scss';
 
 function Header() {
   const { isAuth, user: { name }} = useSelector((state: IState) => state.auth);
+  const dispatch = useDispatch();
+
   return (
     <header className="header">
     <div className='header__container'>
@@ -38,7 +41,7 @@ function Header() {
               </Link>
             ))
           }</div>
-          <User name={name || ''} logout={() => {}}/>
+          <User name={name || ''} logout={() => dispatch(logout())}/>
         </>
       )}
     </div>
