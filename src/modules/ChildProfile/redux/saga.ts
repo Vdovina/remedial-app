@@ -4,12 +4,14 @@ import { ACTIONS } from './constants';
 import {
   loadChildInfoSuccess,
   loadChildInfoFail,
+  loadProgrammesSuccess,
+  loadProgrammesFail,
 } from './actions';
 import { IChild, IChildResponse } from '../../../models/IChild';
-import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../../constants/routes';
 import { ERRORS } from '../../../constants/errors';
 import { IResponse } from '../../../models/IResponse';
+import { IProgrammeListResponse } from '../../../models/IProgramme';
+import ProgrammeService from '../../../services/API/ProgramService';
 
 export function* fetchChildInfo() {
   try {
@@ -30,6 +32,26 @@ export function* fetchChildInfo() {
   }
   catch (error) {
     yield put(loadChildInfoFail(error));
+  }
+}
+
+export function* fetchProgrammes() {
+  try {
+    const { user: { token }} = yield select(state => state.auth);
+    const result : IProgrammeListResponse = yield call(ProgrammeService.getList, token);
+    if (!result.isSucceeded) {
+      throw ERRORS.LOAD_PROGRAMMES_ERROR;
+    }
+    const processedProgrammes = result.resultData?.map(
+      programme => ({
+        value: programme.id,
+        label: programme.name,
+      })
+    );
+    yield put(loadProgrammesSuccess(processedProgrammes))
+  }
+  catch (error) {
+    loadProgrammesFail(error);
   }
 }
 
@@ -69,6 +91,7 @@ export function* deleteChild() {
 
 export default function* childProfileSaga() {
   yield takeLatest([ACTIONS.LOAD_CHILD_INFO], fetchChildInfo);
+  yield takeLatest([ACTIONS.LOAD_PROGRAMMES], fetchProgrammes);
   yield takeLatest([ACTIONS.SAVE_CHILD], editChild);
   yield takeLatest([ACTIONS.DELETE_CHILD], deleteChild);
 }

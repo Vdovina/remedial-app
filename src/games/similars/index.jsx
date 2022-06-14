@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { TASKS } from "./constants/taskTitles";
 import generate from "./logic/generate";
-import './Similars.scss';
-import { GEOMETRY } from "./figures/geometry";
 import { COLORS } from './constants/colors';
 import { Button, Select } from "../../components";
 import { SIZES } from "./constants/sizes";
-import { ALIVE } from "./figures/alive";
-import { THINGS } from "./figures/things";
+import './Similars.scss';
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 
 const GAME_STATUSES = {
   START: 'START',
@@ -25,13 +24,16 @@ export default function Similars(props) {
     scale,
     figures,
     description,
+    children,
+    onSave,
   } = props;
 
   const [task, setTask] = useState(null);
   const [status, setStatus] = useState(GAME_STATUSES.START);
   const [taskTitle, setTaskTitle] = useState('');
   const [mistakesCount, setMistakesCount] = useState(0);
-  const [player, setPlayer] = useState(null);
+  const [player, setPlayer] = useState(children[0]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const newTask = generate(LEVEL, figures, COLORS);
@@ -47,7 +49,8 @@ export default function Similars(props) {
       setTimeout(() => {
         setStatus(GAME_STATUSES.END);
         console.log(mistakesCount);
-      }, 1000);
+        onSave(mistakesCount, 120, player.value);
+      }, 500);
     }
   }, [task]);
 
@@ -70,8 +73,15 @@ export default function Similars(props) {
       )}>
       {status === GAME_STATUSES.END && (
         <div className="game__winning-canvas">
-          <h1 className="game__winning-text">Игра завершена!</h1>
-          <h2 className="game__winning-text">Молодец!</h2>
+          <div className="game__greeting-area">
+            <h1 className="game__winning-text">Игра завершена!</h1>
+            <h2 className="game__winning-text">Молодец!</h2>
+            <Button
+              onClick={() => navigate(ROUTES.GAMES)}
+            >
+              К странице с играми
+            </Button>
+          </div>
         </div>
       )}
       {status === GAME_STATUSES.RUN && task && (
@@ -107,7 +117,7 @@ export default function Similars(props) {
               <Select
                 label="Выберите ребёнка"
                 value={player}
-                options={[]}
+                options={children}
                 onChange={(value) => setPlayer(value)}
               />
               <Button onClick={() => setStatus(GAME_STATUSES.RUN)}>Играть</Button>

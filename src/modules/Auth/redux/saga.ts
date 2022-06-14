@@ -11,7 +11,6 @@ export function* fetchUser(props: any) {
   try {
     const { payload: { email, password }} = props;
     const result: IUserResponse = yield call(AuthService.authorize, { email, password });
-    debugger;
     
     if (result.isSucceeded) {
       const user = {

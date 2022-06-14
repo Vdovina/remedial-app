@@ -6,36 +6,36 @@ import { IProgrammeGame } from '../../models/IGame';
 export default class ProgrammeService {
   /**
    * Get programms with games list
-   * @param {number} userId
+   * @param {string} token
    * @returns {Promise}
    */
-   static get(userId: number) {
+   static get(token: string) {
     return axios
-      .get(API_ROUTES.GET_PROGRAMMES, { params: { userId }})
+      .get(API_ROUTES.GET_PROGRAMMES, { params: { token }})
       .then(res => res.data);
   }
 
   /**
    * Get programms with games list without games
-   * @param {number} userId
+   * @param {string} token
    * @returns {Promise}
    */
-  static getList(userId: number) {
+  static getList(token: string) {
     return axios
-      .get(API_ROUTES.GET_PROGRAMME_LIST, { params: { userId }})
+      .get(API_ROUTES.GET_PROGRAMME_LIST, { params: { token }})
       .then(res => res.data);
   }
 
   /**
    * Save new program
-   * @param {number} userID
+   * @param {string} tpken
    * @param {string} name
    * @param {IProgrammeGame} games
    * @returns {Promise}
    */
-  static save(userID: number, name: string, games: IProgrammeGame[]) {
+  static save(token: string, name: string, games: IProgrammeGame[]) {
     const data = {
-      userID,
+      token,
       name,
       games,
     };

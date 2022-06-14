@@ -23,8 +23,8 @@ import GameService from '../../../services/API/GameService';
 
 export function* fetchProgrammes() {
   try {
-    const { user: { userId }} = yield select(({ auth }) => auth);
-    const result : IProgrammesResponse = yield call(ProgrammeService.get, userId);
+    const { user: { token }} = yield select(({ auth }) => auth);
+    const result : IProgrammesResponse = yield call(ProgrammeService.get, token);
     if (result.isSucceeded) {
       yield put(loadProgrammesSuccess(result.resultData));
     }
@@ -39,7 +39,7 @@ export function* fetchProgrammes() {
 
 export function* fetchGames() {
   try {
-    const result : IGameListResponse = yield call(GameService.getGames);
+    const result : IGameListResponse = yield call(GameService.get);
     if (!result.isSucceeded) {
       throw ERRORS.LOAD_GAMES_ERROR;
     }
@@ -52,7 +52,7 @@ export function* fetchGames() {
 
 export function* saveProgramme() {
   try {
-    const { user: { userId }} = yield select(({ auth }) => auth);
+    const { user: { token }} = yield select(({ auth }) => auth);
     const { form: { programmeName, programmeGames } } = yield select(({ programmes }) => programmes);
 
     const games = programmeGames?.map(
@@ -63,7 +63,7 @@ export function* saveProgramme() {
       } as IProgrammeGame)
     ) as IProgrammeGame[];
 
-    const result : IResponse = yield call(ProgrammeService.save, userId, programmeName, games);
+    const result : IResponse = yield call(ProgrammeService.save, token, programmeName, games);
     if (!result.isSucceeded) {
       throw ERRORS.SAVE_PROGRAMME_ERROR;
     }

@@ -20,6 +20,7 @@ import {
   setProgramme,
   loadProgrammes,
   saveNewChild,
+  clearForm,
 } from './redux/actions';
 import './NewChild.scss';
 import { SelectOption } from "../../components/Select";
@@ -48,6 +49,7 @@ function NewChild(props : NewChildProps) {
 
   useEffect(() => {
     dispatch(loadProgrammes());
+    return () : void => { dispatch(clearForm()) };
   }, []);
 
   const onSave = () => {

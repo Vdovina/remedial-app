@@ -7,6 +7,7 @@ import { default as gameList } from '../modules/GameList/redux/reducer';
 import { default as programmes } from '../modules/Programmes/redux/reducer';
 import { default as statistics } from '../modules/Statistics/redux/reducer';
 import { default as auth } from '../modules/Auth/redux/reducer';
+import { default as gamePage } from '../modules/GamePage/redux/reducer';
 
 export default combineReducers({
   newChildCard,
@@ -16,4 +17,5 @@ export default combineReducers({
   programmes,
   statistics,
   auth,
+  gamePage,
 });

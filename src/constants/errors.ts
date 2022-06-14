@@ -12,6 +12,7 @@ export const ERRORS = {
   DELETE_CHILD_ERROR: 'Delete Child Failed',
 
   SAVE_PROGRAMME_ERROR: 'Saving Program Failed',
+  SAVE_GAME_RESULTS_ERROR: 'Saving Game Results Failed',
 }
 
 export const ERROR_LABELS = {

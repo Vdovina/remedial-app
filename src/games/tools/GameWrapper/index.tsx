@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SelectOption } from "../../../components/Select";
 import {
   Similars,
   TimerPanel,
@@ -11,6 +12,12 @@ interface GameSwitchProps {
   isTimed: boolean,
   game: GameTypes,
   description: string,
+  children: SelectOption[],
+  onSave?: (
+    mistakeCount: number,
+    timing: number,
+    childId: number,
+  ) => void,
 }
 
 export type GameTypes = 'similar_figures' | 'similar_alive' | 'similar_things';
@@ -20,8 +27,14 @@ function GameSwitch(props: GameSwitchProps) {
     isTimed,
     game,
     description,
+    children,
+    onSave = () => {}
   } = props;
   const INITIAL_SCALE = 5;
+  const ANY_CHILD_OPTION = {
+    value: '*',
+    label: 'Любой',
+  }
   const [toolsOpen, setToolsOpen] = useState(false);
   const [theme, setTheme] = useState<GameThemeType>('light');
   const [scale, setScale] = useState(INITIAL_SCALE);
@@ -45,6 +58,8 @@ function GameSwitch(props: GameSwitchProps) {
         setTheme={setTheme}
         scale={scale}
         setScale={setScale}
+        children={[ANY_CHILD_OPTION, ...children]}
+        onSave={onSave}
       />
     </div>
   );

@@ -36,6 +36,10 @@ export const setProgramme = (value: SelectOption) => ({
   payload: value,
 });
 
+export const clearForm = () => ({
+  type: ACTIONS.CLEAR_FORM,
+});
+
 
 export const loadProgrammes = () => ({
   type: ACTIONS.LOAD_PROGRAMMES,

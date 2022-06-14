@@ -29,7 +29,7 @@ export default class ChildService {
    */
    static getNames(token: string) {
     return axios
-      .get(API_ROUTES.GET_CHILDREN_NAMES, { params: token })
+      .get(API_ROUTES.GET_CHILDREN_NAMES, { params: { token } })
       .then(res => res.data);
   }
 
@@ -39,7 +39,11 @@ export default class ChildService {
    * @param {IChildData} data
    * @returns {Promise}
    */
-  static create(token: string, data: IChildData) {
+  static create(token: string, childData: IChildData) {
+    const data = {
+      token,
+      ...childData,
+    };
     return axios.post(API_ROUTES.CREATE_NEW_CHILD, data);
   }
 

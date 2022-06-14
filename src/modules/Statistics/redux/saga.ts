@@ -58,7 +58,7 @@ export function* fetchChildren() {
 
 export function* fetchGames() {
   try {
-    const result : IGameListResponse = yield call(GameService.getGames);
+    const result : IGameListResponse = yield call(GameService.get);
     if (!result.isSucceeded) {
       throw ERRORS.LOAD_GAMES_ERROR;
     }

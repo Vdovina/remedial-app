@@ -14,7 +14,6 @@ import './Programmes.scss';
 function Programmes() {
   const {
     programmes,
-    // games
     form: { id },
   } = useSelector((state : IState) => state.programmes);
   

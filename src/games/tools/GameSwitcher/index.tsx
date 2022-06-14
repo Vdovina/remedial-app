@@ -5,6 +5,7 @@ import { GameThemeType } from "../TimerPanel";
 import { GEOMETRY } from "../../similars/figures/geometry";
 import { ALIVE } from "../../similars/figures/alive";
 import { THINGS } from "../../similars/figures/things";
+import { SelectOption } from "../../../components/Select";
 
 interface GameSwitcherProps {
   game: GameTypes,
@@ -13,6 +14,12 @@ interface GameSwitcherProps {
   setTheme: (value: GameThemeType) => void,
   scale: number,
   setScale: (value: number) => void,
+  children: SelectOption[],
+  onSave: (
+    mistakeCount: number,
+    timing: number,
+    childId: number,
+  ) => void,
 }
 
 function GameSwitcher({
@@ -20,6 +27,8 @@ function GameSwitcher({
   description,
   theme, setTheme,
   scale, setScale,
+  children,
+  onSave,
 } : GameSwitcherProps) {
   const gameSwitcher = (game: GameTypes) => {
     switch(game) {
@@ -47,6 +56,8 @@ function GameSwitcher({
       setTheme={setTheme}
       scale={scale}
       setScale={setScale}
+      children={children}
+      onSave={onSave}
     />
   );
 }

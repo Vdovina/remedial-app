@@ -77,6 +77,11 @@ const reducer = (
           programme: action.payload,
         }
       };
+    case ACTIONS.CLEAR_FORM:
+      return {
+        ...state,
+        form: initialState.form,
+      };
 
     case ACTIONS.LOAD_PROGRAMMES_SUCCESS:
       return {

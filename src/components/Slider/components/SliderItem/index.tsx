@@ -4,11 +4,12 @@ type SliderItemPropsType = {
   children: JSX.Element | string,
   title: string,
   text: string,
+  onClick?: () => void;
 }
 
-function SliderItem({ children, title, text } : SliderItemPropsType) {
+function SliderItem({ children, title, text, onClick } : SliderItemPropsType) {
   return (
-    <div className='slider__item'>
+    <div className='slider__item' onClick={onClick}>
       <div className='slider__item__image'>
         {children}
       </div>

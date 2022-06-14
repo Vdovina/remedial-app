@@ -75,7 +75,7 @@ export const loadProgrammesSuccess = (value: SelectOption[]) => ({
   payload: value,
 });
 
-export const loadProgrammesFail = (error: string) => ({
+export const loadProgrammesFail = (error: any) => ({
   type: ACTIONS.LOAD_PROGRAMMES_FAIL,
   payload: error,
 });

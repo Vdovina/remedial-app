@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../../redux/store";
 import { loadGames } from './redux/actions';
-import './GameList.scss';
+import { setCurrentGame } from "../GamePage/redux/actions";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
+import './GameList.scss';
 
 function GameList() {
   const { games } = useSelector((state : IState) => state.gameList);
@@ -15,7 +16,11 @@ function GameList() {
     dispatch(loadGames());
   }, []);
 
-  const onSelectGame = (gamePath: string) => navigate(ROUTES.GAME.replace(':game', gamePath));
+  const onSelectGame = (gamePath: string) => {
+    // const currentGame = games.find(game => game.code === gamePath);
+    // dispatch(setCurrentGame(currentGame));
+    navigate(ROUTES.GAME.replace(':game', gamePath));
+  };
 
   return (
     <div className="game-list__wrapper">

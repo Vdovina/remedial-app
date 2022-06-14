@@ -38,4 +38,8 @@ export const API_ROUTES = {
   SAVE_PROGRAMME: `${SERVER}/program/addProgram`,
   EDIT_PROGRAMME: `${SERVER}/program/editProgram`,
   DELETE_PROGRAMME: `${SERVER}/program/deleteProgram`,
+
+  //Games
+  SAVE_RESULTS: `${SERVER}/statistics/saveResults`,
+  GET_DASHBOARD_DATA: `${SERVER}/statistics/dashboard`,
 };

@@ -35,6 +35,7 @@ export interface IChildTableData {
 export interface IChildName {
   id: number,
   name: string,
+  surname: string,
 }
 
 export interface IChildResponse extends IResponse {

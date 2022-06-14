@@ -25,8 +25,8 @@ interface ChildType {
 
 export function* fetchProgrammes() {
   try {
-    const { user: { userId }} = yield select(state => state.auth);
-    const result : IProgrammeListResponse = yield call(ProgrammeService.getList, userId);
+    const { user: { token }} = yield select(state => state.auth);
+    const result : IProgrammeListResponse = yield call(ProgrammeService.getList, token);
     if (!result.isSucceeded) {
       throw ERRORS.LOAD_PROGRAMMES_ERROR;
     }
@@ -48,7 +48,7 @@ export function* saveNewChild() {
     const { user: { token }} = yield select(state => state.auth);
     const data: ChildType = yield select(state => state.newChildCard.form);
     const newDate = data.birthDate && moment(data.birthDate).format('YYYY-MM-DD');
-    debugger;
+    
     const params = {
       surname: data.surname,
       name: data.name,
