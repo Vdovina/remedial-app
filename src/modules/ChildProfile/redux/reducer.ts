@@ -91,7 +91,9 @@ const reducer = (
           parentPhone: action.payload.parentPhone,
           diagnosis: action.payload.diagnosis,
           info: action.payload.info,
-          programme: action.payload.programme,
+          programme: state.options.programmes?.find(
+            item => item.value === action.payload.programme
+          ),
         },
         isLoading: LOADING_STATUS.DONE,
       });

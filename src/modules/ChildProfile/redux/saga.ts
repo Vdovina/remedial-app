@@ -67,7 +67,7 @@ export function* editChild() {
       diagnosis: form.diagnosis,
       parentPhone: form.parentPhone,
       info: form.info,
-      programId: form.programme.value,
+      programId: form.programme?.value || null,
     };
     yield call(ChildService.edit, token, newChildData);
   }
